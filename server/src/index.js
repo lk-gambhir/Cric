@@ -26,7 +26,7 @@ app.get('/health', (_req, res) => {
 
 setupSocketHandlers(io);
 
-const PORT = process.env.PORT;
-httpServer.listen(PORT, () => {
+const PORT = process.env.PORT || 3001;
+httpServer.listen(PORT, '0.0.0.0', () => {
   console.log(`Hand Cricket Server running on port ${PORT}`);
 });
