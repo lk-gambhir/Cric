@@ -1,0 +1,162 @@
+@import "tailwindcss";
+
+/* ─── Bold Typography Theme (Clean/Flat) ───────── */
+@theme {
+  --color-background: #0A0A0A;
+  --color-foreground: #FAFAFA;
+  --color-muted: #1A1A1A;
+  --color-muted-foreground: #737373;
+  --color-accent: #22c55e;
+  --color-accent-foreground: #0A0A0A;
+  --color-border: #262626;
+  --color-input: #1A1A1A;
+  --color-card: #0F0F0F;
+  --color-card-foreground: #FAFAFA;
+  --color-ring: #22c55e;
+  
+  --font-sans: 'Inter', system-ui, sans-serif;
+  --font-display: 'Inter Tight', system-ui, sans-serif;
+  --font-mono: 'JetBrains Mono', monospace;
+  --font-serif: 'Playfair Display', serif;
+}
+
+/* ─── Base Styles ──────────────────────────────── */
+@layer base {
+  * {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+  }
+
+  html {
+    font-family: var(--font-sans);
+    -webkit-font-smoothing: antialiased;
+    -moz-osx-font-smoothing: grayscale;
+  }
+
+  body {
+    background-color: var(--color-background);
+    color: var(--color-foreground);
+    min-height: 100vh;
+    overflow-x: hidden;
+  }
+
+  #root {
+    min-height: 100vh;
+    display: flex;
+    flex-direction: column;
+  }
+
+  h1, h2, h3, h4, h5, h6 {
+    font-family: var(--font-display);
+    letter-spacing: -0.04em;
+  }
+
+  .display-title {
+    font-family: var(--font-display);
+    letter-spacing: -0.06em;
+    line-height: 1;
+  }
+}
+
+/* ─── Typography Utils ─────────────────────────── */
+.tracking-tighter-display { letter-spacing: -0.06em; }
+.tracking-tight-display { letter-spacing: -0.04em; }
+.tracking-wide-label { letter-spacing: 0.1em; }
+.tracking-widest-label { letter-spacing: 0.2em; }
+
+/* ─── Interactive Elements ─────────────────────── */
+
+/* Primary Button (Green Outline) */
+.btn-primary, .btn-secondary {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  border: 1px solid var(--color-accent);
+  color: var(--color-accent);
+  background: transparent;
+  padding: 0.75rem 1.5rem;
+  text-transform: uppercase;
+  letter-spacing: 0.1em;
+  font-weight: 600;
+  border-radius: 4px;
+  transition: all 150ms cubic-bezier(0.25, 0, 0, 1);
+  cursor: pointer;
+}
+
+.btn-primary:hover:not(:disabled), .btn-secondary:hover:not(:disabled) {
+  background: var(--color-accent);
+  color: var(--color-accent-foreground);
+}
+
+.btn-primary:active:not(:disabled), .btn-secondary:active:not(:disabled) {
+  transform: translateY(1px);
+}
+
+.btn-primary:disabled, .btn-secondary:disabled {
+  opacity: 0.5;
+  cursor: not-allowed;
+}
+
+/* Custom Input */
+.input-minimal {
+  background-color: var(--color-input);
+  border: 1px solid var(--color-border);
+  border-radius: 4px; /* Simple corners */
+  color: var(--color-foreground);
+  padding: 0.75rem 1rem;
+  font-size: 1rem;
+  transition: border-color 150ms ease;
+}
+
+.input-minimal:focus {
+  outline: none;
+  border-color: var(--color-accent);
+}
+
+.input-minimal::placeholder {
+  color: var(--color-muted-foreground);
+}
+
+/* ─── Circular Timer ───────────────────────────── */
+.timer-ring {
+  transform: rotate(-90deg);
+}
+
+.timer-ring .ring-bg {
+  stroke: var(--color-border);
+}
+
+.timer-ring .ring-progress {
+  stroke: var(--color-accent);
+  transition: stroke-dashoffset 1s linear, stroke 0.3s ease;
+}
+
+.timer-ring .ring-progress.warning {
+  stroke: var(--color-foreground);
+}
+
+/* ─── Scoreboard ───────────────────────────────── */
+.score-display {
+  font-variant-numeric: tabular-nums;
+  font-family: var(--font-display);
+  letter-spacing: -0.04em;
+}
+
+/* ─── Scrollbar ────────────────────────────────── */
+::-webkit-scrollbar {
+  width: 6px;
+}
+
+::-webkit-scrollbar-track {
+  background: var(--color-background);
+}
+
+::-webkit-scrollbar-thumb {
+  background: var(--color-border);
+  border-radius: 4px;
+}
+
+::-webkit-scrollbar-thumb:hover {
+  background: var(--color-muted-foreground);
+}
